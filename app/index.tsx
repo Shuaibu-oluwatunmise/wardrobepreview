@@ -61,7 +61,7 @@ const ProductShowcase = () => {
             >
               {!fullPreview && (
                 <LinearGradient
-                  colors={["transparent", "rgba(0,0,0,0.3)", "rgba(0,0,0,0.7)", "rgba(0,0,0,1)"]}
+                  colors={["transparent", "rgba(0, 0, 0, 0.07)", "rgba(0,0,0,1)"]}
                   style={styles.gradientOverlay}
                 />
               )}
@@ -70,36 +70,17 @@ const ProductShowcase = () => {
                 <>
                   {/* Header */}
                   <View style={styles.header}>
-                    <TouchableOpacity style={styles.collectionSelector} onPress={triggerSelection}>
-                      <Text style={styles.headerTitle}>Liked Collection</Text>
-                      <Ionicons name="chevron-down" size={20} color="white" style={{ marginLeft: 6 }} />
-                    </TouchableOpacity>
                     <View style={styles.headerIcons}>
-                      <TouchableOpacity style={styles.iconButton} onPress={triggerSelection}>
-                        <Ionicons name="search-outline" size={24} color="white" />
+                      <TouchableOpacity style={styles.headerindvicons}>
+                        <Ionicons name="chevron-back" size={24} color="white" />
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.iconButton} onPress={triggerSelection}>
-                        <Ionicons name="create-outline" size={24} color="white" />
+                      <TouchableOpacity style={styles.headerindvicons}>
+                        <Ionicons name="filter-outline" size={24} color="white" />
                       </TouchableOpacity>
                     </View>
                   </View>
 
-                  {/* Dropdown Menu for mode selection */}
-                  <View style={styles.dropdownWrapper}>
-                    <Menu
-                      visible={menuVisible}
-                      onDismiss={closeMenu}
-                      anchor={
-                        <TouchableOpacity onPress={openMenu} style={styles.dropdownAnchor}>
-                          <Text style={styles.dropdownText}>{mode}</Text>
-                          <Ionicons name="chevron-down" size={16} color="white" style={{ marginLeft: 4 }} />
-                        </TouchableOpacity>
-                      }
-                    >
-                      <Menu.Item onPress={() => handleModeSelect("Outfits") } title="Outfits" />
-                      <Menu.Item onPress={() => handleModeSelect("Clothes") } title="Clothes" />
-                    </Menu>
-                  </View>
+                
 
                   {/* Carousel */}
                   <BubbleCarousel
@@ -123,9 +104,9 @@ const ProductShowcase = () => {
                     <Text style={styles.itemSubtitle}>Streetwear Vibe</Text>
                   </View>
 
-                  {/* Delete Button */}
                   <TouchableOpacity style={styles.deleteButton} onPress={triggerSelection}>
-                    <Ionicons name="trash-outline" size={24} color="red" />
+                    <Text>Liked </Text>
+                    <Ionicons name="chevron-expand" size={18} color="black"/>
                   </TouchableOpacity>
 
                   {/* Action Buttons (right side) */}
@@ -134,7 +115,7 @@ const ProductShowcase = () => {
                       <Ionicons name="shirt-outline" size={24} color="white" />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionButton} onPress={triggerSelection}>
-                      <Ionicons name="heart-outline" size={24} color="white" />
+                      <Ionicons name="bookmark-outline" size={24} color="white" />
                     </TouchableOpacity>
                   </View>
 
@@ -201,9 +182,9 @@ const styles = StyleSheet.create({
   header: {
     paddingVertical: 20,
     paddingHorizontal: 8,
-    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    backgroundColor: "transparent",
     flexDirection: "row",
-    justifyContent: "space-between",
+    //justifyContent: "space-between",
     alignItems: "center",
   },
   collectionSelector: {
@@ -217,7 +198,9 @@ const styles = StyleSheet.create({
   },
   headerIcons: {
     flexDirection: "row",
-    gap: 16,
+    width: '100%',
+    justifyContent: 'space-between',
+    
   },
   iconButton: {
     padding: 8,
@@ -247,23 +230,40 @@ const styles = StyleSheet.create({
   itemTitle: {
     color: "white",
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "900",
   },
   itemSubtitle: {
     color: "white",
     fontSize: 14,
+    marginTop: 8,
   },
   deleteButton: {
     position: "absolute",
     bottom: 80,
-    right: 16,
-    padding: 8,
+    right: 32,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: "white",
+    borderRadius: 20,
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 5,
   },
   actionsPanel: {
     position: "absolute",
     top: height * 0.25,
     right: 10,
-    gap: 20,
+    gap: 10,
+    backgroundColor: "rgba(0,0,0,0.4)",
+    borderRadius: 20,
+  },
+  headerindvicons: {
+    backgroundColor: "rgba(0,0,0,0.4)",
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   actionButton: {
     padding: 8,
@@ -305,7 +305,6 @@ const styles = StyleSheet.create({
   navBar: {
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
     paddingVertical: 12,
   },
   navItem: {

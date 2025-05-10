@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: ITEM_SIZE / 2,
     backgroundColor: "transparent",
     marginHorizontal: 4,
-    borderColor: "white",
+    borderColor: "white", //#EA9F5A
     borderWidth: 3,
     overflow: "hidden",
     justifyContent: "center",
